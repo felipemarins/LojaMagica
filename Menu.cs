@@ -19,7 +19,7 @@ public class Menu
         TextoDeCima = textoAcima;
     }
 
-    public void IniciarMenuPadrao(string textoAcima, List<string> opcoes)
+    public void IniciarMenuPadrao()
     {
         while (ContinuarMenu != false)
         {
