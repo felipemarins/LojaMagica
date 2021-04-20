@@ -11,9 +11,16 @@ public class Menu
 
     public bool ContinuarMenu;
 
+    public Menu(string textoAcima, List<string> opcoes)
+    {
+        ContinuarMenu = true;
+        Opcoes = opcoes;
+        Selecao = 0;
+        TextoDeCima = textoAcima;
+    }
+
     public void IniciarMenuPadrao(string textoAcima, List<string> opcoes)
     {
-        IniciarMenu(textoAcima, opcoes);
         while (ContinuarMenu != false)
         {
             AtualizarMenu();
@@ -23,14 +30,6 @@ public class Menu
             Selecao = 0;
         else
             Selecao++;
-    }
-
-    public void IniciarMenu(string textoAcima, List<string> opcoes)
-    {
-        ContinuarMenu = true;
-        Opcoes = opcoes;
-        Selecao = 0;
-        TextoDeCima = textoAcima;
     }
 
     public void AtualizarMenu()
