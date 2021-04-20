@@ -11,19 +11,19 @@ public class Loja
     {
         Console.Clear();
         Console.WriteLine("Adicionar um novo item ao catálogo\n");
-        Item item = new Item();
 
         Console.Write("Nome do item: ");
-        item.Nome = Console.ReadLine();
+        String nome = Console.ReadLine();
         Console.Write("Descrição: ");
-        item.Descricao = Console.ReadLine();
+        String descricao = Console.ReadLine();
         Console.Write("Categoria: ");
-        item.Categoria = Console.ReadLine();
+        String categoria = Console.ReadLine();
         Console.Write("Valor: ");
-        item.Valor = Convert.ToInt32(Console.ReadLine());
+        Int32 valor = Convert.ToInt32(Console.ReadLine());
         Console.Write("Quantidade no estoque: ");
-        int quantidade = Convert.ToInt32(Console.ReadLine());
+        Int32 quantidade = Convert.ToInt32(Console.ReadLine());
 
+        Item item = new Item(nome, descricao, categoria, valor);
         Estoque.Add(item.Nome, new Tuple<Item, int>(item, quantidade));
         Console.WriteLine("\nO item " + item.Nome + " foi adicionado ao catálogo");
 
