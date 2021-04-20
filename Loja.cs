@@ -27,8 +27,7 @@ public class Loja
         Estoque.Add(item.Nome, new Tuple<Item, int>(item, quantidade));
         Console.WriteLine("\nO item " + item.Nome + " foi adicionado ao catálogo");
 
-        Console.WriteLine("\nPressione qualquer tecla para retornar ao menu");
-        Console.ReadKey();
+        Menu.EsperarPorTecla();
     }
     public void SalvarEstoque()
     {
@@ -39,8 +38,7 @@ public class Loja
         Console.Clear();
         Console.WriteLine("O estoque foi salvo no arquivo \'Estoque.json\' na pasta do programa!");
 
-        Console.WriteLine("\nPressione qualquer tecla para retornar ao menu");
-        Console.ReadKey();
+        Menu.EsperarPorTecla();
     }
     public void CarregarEstoque()
     {
@@ -78,8 +76,7 @@ public class Loja
             Console.WriteLine("Valor: " + item.Valor);
             Console.WriteLine("Quantidade no estoque: " + Estoque[nomeDoItem].Item2);
         }
-        Console.WriteLine("\nPressione qualquer tecla para retornar ao menu");
-        Console.ReadKey();
+        Menu.EsperarPorTecla();
     }
     public void AdicionarUnidadesItem(string nomeDoItem)
     {
@@ -92,10 +89,8 @@ public class Loja
             quantidade += Estoque[nomeDoItem].Item2;
             Estoque[nomeDoItem] = new Tuple<Item, int>(Estoque[nomeDoItem].Item1, quantidade);
             Console.WriteLine("\nNova quantidade: " + Estoque[nomeDoItem].Item2);
-
-            Console.WriteLine("\nPressione qualquer tecla para retornar ao menu");
-            Console.ReadKey();
         }
+        Menu.EsperarPorTecla();
     }
     public bool ItemExiste(string nomeDoItem)
     {

@@ -77,4 +77,10 @@ public class Menu
         Console.ForegroundColor = ConsoleColor.White;
         Console.BackgroundColor = ConsoleColor.Black;
     }
+
+    public static void EsperarPorTecla()
+    {
+        Console.WriteLine("\nPressione qualquer tecla para retornar ao menu");
+        Console.ReadKey();
+    }
 }
