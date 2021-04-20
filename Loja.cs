@@ -7,6 +7,14 @@ public class Loja
 {
     public Dictionary<string, Tuple<Item, int>> Estoque = new Dictionary<string, Tuple<Item, int>>();
 
+    public Loja(bool carregarEstoque)
+    {
+        if (carregarEstoque == true)
+        {
+            this.CarregarEstoque();
+        }
+    }
+
     public void AdicionarItem()
     {
         Console.Clear();
@@ -59,7 +67,7 @@ public class Loja
         foreach (KeyValuePair<string, Tuple<Item, int>> item in this.Estoque)
         {
             Console.WriteLine("Item: " + item.Key);
-            Console.WriteLine("Valor: " + item.Value.Item1.Valor + "po");
+            Console.WriteLine("Valor: " + item.Value.Item1.Valor + " po");
             Console.WriteLine("Quantidade: " + item.Value.Item2 + " unidades\n");
         }
         Console.WriteLine("Pressione qualquer tecla para retornar ao menu");

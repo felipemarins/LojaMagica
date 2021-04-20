@@ -7,17 +7,18 @@ namespace LojaMagica
     {
         static void Main(string[] args)
         {
-            Loja loja = new Loja();
+            Loja loja = new Loja(false);
             bool sair = false;
             do
             {
                 Menu menuInicial = new Menu("Selecione se você é um cliente ou um administrador.\n",
                     new List<string> { "Sou um cliente", "Sou um adminstrador", "Sair" });
                 menuInicial.IniciarMenuPadrao();
-                Console.Clear();
                 if (menuInicial.Selecao == 0) { sair = true; }
                 else if (menuInicial.Selecao == 1)
                 {
+                    loja = new Loja(true);
+                    Console.Clear();
                     Console.Write("Digite seu nome: ");
                     String nome = Console.ReadLine();
                     Console.Write("Quantas peças de ouro você tem? ");
@@ -36,6 +37,7 @@ namespace LojaMagica
                         else if (menuPersonagem.Selecao == 1) { loja.ImprimirEstoque(); }
                         else if (menuPersonagem.Selecao == 2)
                         {
+                            Console.Clear();
                             Console.Write("Digite o nome do item: ");
                             string nomeDoItem = Console.ReadLine();
                             Console.Write("Quantas unidades? ");
