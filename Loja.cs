@@ -24,36 +24,39 @@ public class Loja
         Int32 quantidade = Convert.ToInt32(Console.ReadLine());
 
         Item item = new Item(nome, descricao, categoria, valor);
-        Estoque.Add(item.Nome, new Tuple<Item, int>(item, quantidade));
+        this.Estoque.Add(item.Nome, new Tuple<Item, int>(item, quantidade));
         Console.WriteLine("\nO item " + item.Nome + " foi adicionado ao catálogo");
 
         Menu.EsperarPorTecla();
     }
+
     public void SalvarEstoque()
     {
         Console.Clear();
         Console.WriteLine("Salvando o estoque no arquivo \'Estoque.json\' na pasta do programa");
-        string json = JsonSerializer.Serialize(Estoque);
+        string json = JsonSerializer.Serialize(this.Estoque);
         File.WriteAllText("Estoque.json", json);
         Console.Clear();
         Console.WriteLine("O estoque foi salvo no arquivo \'Estoque.json\' na pasta do programa!");
 
         Menu.EsperarPorTecla();
     }
+
     public void CarregarEstoque()
     {
         Console.Clear();
         Console.WriteLine("Carregando o estoque salvo");
         string json = File.ReadAllText("Estoque.json");
-        Estoque = JsonSerializer.Deserialize<Dictionary<string, Tuple<Item, int>>>(json);
+        this.Estoque = JsonSerializer.Deserialize<Dictionary<string, Tuple<Item, int>>>(json);
         Console.Clear();
         Console.WriteLine("O estoque foi carregado a partir de um arquivo salvo.");
     }
+
     public void ImprimirEstoque()
     {
         Console.Clear();
         Console.WriteLine("Lista de itens no estoque:\n");
-        foreach (KeyValuePair<string, Tuple<Item, int>> item in Estoque)
+        foreach (KeyValuePair<string, Tuple<Item, int>> item in this.Estoque)
         {
             Console.WriteLine("Item: " + item.Key);
             Console.WriteLine("Valor: " + item.Value.Item1.Valor + "po");
@@ -62,12 +65,13 @@ public class Loja
         Console.WriteLine("Pressione qualquer tecla para retornar ao menu");
         Console.ReadKey();
     }
+
     public void ImprimirDetalhesItem(string nomeDoItem)
     {
         Console.Clear();
-        if (ItemExiste(nomeDoItem))
+        if (this.ItemExiste(nomeDoItem))
         {
-            Item item = Estoque[nomeDoItem].Item1;
+            Item item = this.Estoque[nomeDoItem].Item1;
 
             Console.WriteLine("Detalhes sobre " + nomeDoItem + '\n');
 
@@ -75,27 +79,29 @@ public class Loja
             Console.WriteLine("Descrição: " + item.Descricao);
             Console.WriteLine("Categoria: " + item.Categoria);
             Console.WriteLine("Valor: " + item.Valor);
-            Console.WriteLine("Quantidade no estoque: " + Estoque[nomeDoItem].Item2);
+            Console.WriteLine("Quantidade no estoque: " + this.Estoque[nomeDoItem].Item2);
         }
         Menu.EsperarPorTecla();
     }
+
     public void AdicionarUnidadesItem(string nomeDoItem)
     {
         Console.Clear();
-        if (ItemExiste(nomeDoItem))
+        if (this.ItemExiste(nomeDoItem))
         {
             Console.WriteLine("Adicionar unidades ao item " + nomeDoItem + '\n');
             Console.Write("Unidades a se adicionar: ");
             int quantidade = Convert.ToInt32(Console.ReadLine());
-            quantidade += Estoque[nomeDoItem].Item2;
-            Estoque[nomeDoItem] = new Tuple<Item, int>(Estoque[nomeDoItem].Item1, quantidade);
-            Console.WriteLine("\nNova quantidade: " + Estoque[nomeDoItem].Item2);
+            quantidade += this.Estoque[nomeDoItem].Item2;
+            this.Estoque[nomeDoItem] = new Tuple<Item, int>(this.Estoque[nomeDoItem].Item1, quantidade);
+            Console.WriteLine("\nNova quantidade: " + this.Estoque[nomeDoItem].Item2);
         }
         Menu.EsperarPorTecla();
     }
+
     public bool ItemExiste(string nomeDoItem)
     {
-        if (Estoque.ContainsKey(nomeDoItem)) { return true; }
+        if (this.Estoque.ContainsKey(nomeDoItem)) { return true; }
         else
         {
             Console.WriteLine("Este item não consta no catálogo. Verifique se não houve algum erro de digitação.");
@@ -105,13 +111,13 @@ public class Loja
 
     public Item RetornarItem(string nomeDoItem)
     {
-        return Estoque[nomeDoItem].Item1;
+        return this.Estoque[nomeDoItem].Item1;
     }
 
     public Item VenderItem(string nomeDoItem)
     {
-        int novaQuantidade = Estoque[nomeDoItem].Item2 - 1;
-        Estoque[nomeDoItem] = new Tuple<Item, int>(Estoque[nomeDoItem].Item1, novaQuantidade);
-        return Estoque[nomeDoItem].Item1;
+        int novaQuantidade = this.Estoque[nomeDoItem].Item2 - 1;
+        this.Estoque[nomeDoItem] = new Tuple<Item, int>(this.Estoque[nomeDoItem].Item1, novaQuantidade);
+        return this.Estoque[nomeDoItem].Item1;
     }
 }

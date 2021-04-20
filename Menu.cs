@@ -13,40 +13,40 @@ public class Menu
 
     public Menu(string textoAcima, List<string> opcoes)
     {
-        ContinuarMenu = true;
-        Opcoes = opcoes;
-        Selecao = 0;
-        TextoDeCima = textoAcima;
+        this.ContinuarMenu = true;
+        this.Opcoes = opcoes;
+        this.Selecao = 0;
+        this.TextoDeCima = textoAcima;
     }
 
     public void IniciarMenuPadrao()
     {
-        while (ContinuarMenu != false)
+        while (this.ContinuarMenu != false)
         {
-            AtualizarMenu();
-            PegarTecla();
+            this.AtualizarMenu();
+            this.PegarTecla();
         }
-        if (Selecao == Opcoes.Count - 1)
-            Selecao = 0;
+        if (this.Selecao == this.Opcoes.Count - 1)
+            this.Selecao = 0;
         else
-            Selecao++;
+            this.Selecao++;
     }
 
     public void AtualizarMenu()
     {
         Console.Clear();
         int i = 0;
-        Console.WriteLine(TextoDeCima);
-        foreach (string opcao in Opcoes)
+        Console.WriteLine(this.TextoDeCima);
+        foreach (string opcao in this.Opcoes)
         {
-            if (i == Selecao)
+            if (i == this.Selecao)
             {
-                DestacarSelecao();
+                this.DestacarSelecao();
             }
 
             Console.WriteLine(opcao);
 
-            if (i == Selecao)
+            if (i == this.Selecao)
             {
                 Console.ResetColor();
             }
@@ -60,16 +60,16 @@ public class Menu
         ConsoleKeyInfo tecla = new ConsoleKeyInfo();
         tecla = Console.ReadKey();
         if (tecla.Key == ConsoleKey.Enter)
-            SairMenu();
-        else if (tecla.Key == ConsoleKey.DownArrow && Selecao + 1 < Opcoes.Count)
-            Selecao++;
-        else if (tecla.Key == ConsoleKey.UpArrow && Selecao - 1 >= 0)
-            Selecao--;
+            this.SairMenu();
+        else if (tecla.Key == ConsoleKey.DownArrow && this.Selecao + 1 < this.Opcoes.Count)
+            this.Selecao++;
+        else if (tecla.Key == ConsoleKey.UpArrow && this.Selecao - 1 >= 0)
+            this.Selecao--;
     }
 
     public void SairMenu()
     {
-        ContinuarMenu = false;
+        this.ContinuarMenu = false;
     }
 
     public void DestacarSelecao()

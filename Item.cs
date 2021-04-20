@@ -9,9 +9,9 @@ public class Item
 
     public Item(String nome, String descricao, String categoria, Int32 valor)
     {
-        Nome = nome;
-        Descricao = descricao;
-        Categoria = categoria;
-        Valor = valor;
+        this.Nome = nome;
+        this.Descricao = descricao;
+        this.Categoria = categoria;
+        this.Valor = valor;
     }
 }
