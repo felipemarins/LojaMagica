@@ -17,7 +17,32 @@ namespace LojaMagica
                 if (menuInicial.Selecao == 0) { sair = true; }
                 else if (menuInicial.Selecao == 1)
                 {
-                    Console.WriteLine("Comprando");
+                    Console.Write("Digite seu nome: ");
+                    String nome = Console.ReadLine();
+                    Console.Write("Quanto de ouro você tem? ");
+                    Int32 ouro = Convert.ToInt32(Console.ReadLine());
+
+                    Personagem personagemAtual = new Personagem();
+                    personagemAtual.Nome = nome;
+                    personagemAtual.Ouro = ouro;
+
+                    do
+                    {
+                        Menu menuPersonagem = new Menu("Bem-vindo, " + nome,
+                            new List<string> { "Ver catálogo", "Comprar item" });
+                        if (menuPersonagem.Selecao == 0) { sair = true; }
+                        else if (menuPersonagem.Selecao == 1) { loja.ImprimirEstoque(); }
+                        else if (menuPersonagem.Selecao == 2)
+                        {
+                            Console.Write("Digite o nome do item: ");
+                            string nomeDoItem = Console.ReadLine();
+                            Console.Write("Quantas unidades? ");
+                            int quantidade = Convert.ToInt32(Console.ReadLine());
+
+                            personagemAtual.ComprarItem(nomeDoItem, quantidade, loja);
+                        }
+                    } while (sair != true);
+                    sair = false;
                 }
                 else if (menuInicial.Selecao == 2)
                 {
