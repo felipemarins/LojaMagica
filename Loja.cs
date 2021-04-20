@@ -106,7 +106,7 @@ public class Loja
             return false;
         }
     }
-    public Item ObterItem(string nomeDoItem, int quantidade)
+    public Item VenderItem(string nomeDoItem)
     {
         int novaQuantidade = Estoque[nomeDoItem].Item2 - 1;
         Estoque[nomeDoItem] = new Tuple<Item, int>(Estoque[nomeDoItem].Item1, novaQuantidade);
