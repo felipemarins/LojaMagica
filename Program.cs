@@ -11,8 +11,7 @@ namespace LojaMagica
             bool sair = false;
             do
             {
-                Menu menuInicial = new Menu();
-                menuInicial.IniciarMenuPadrao("Selecione se você é um cliente ou um administrador.\n",
+                Menu menuInicial = new Menu("Selecione se você é um cliente ou um administrador.\n",
                     new List<string> { "Sou um cliente", "Sou um adminstrador", "Sair" });
                 Console.Clear();
                 if (menuInicial.Selecao == 0) { sair = true; }
@@ -24,8 +23,7 @@ namespace LojaMagica
                 {
                     do
                     {
-                        Menu menuAdministrador = new Menu();
-                        menuAdministrador.IniciarMenuPadrao("Bem-vindo, administrador!\n",
+                        Menu menuAdministrador = new Menu("Bem-vindo, administrador!\n",
                             new List<string> { "Adicionar um novo item ao catálogo", "Salvar estoque", "Carregar estoque",
                             "Adicionar unidades a um item", "Listar items no estoque", "Ver detalhes de um item", "Voltar" });
                         if (menuAdministrador.Selecao == 0) { sair = true; }
