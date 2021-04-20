@@ -102,6 +102,12 @@ public class Loja
             return false;
         }
     }
+
+    public Item RetornarItem(string nomeDoItem)
+    {
+        return Estoque[nomeDoItem].Item1;
+    }
+
     public Item VenderItem(string nomeDoItem)
     {
         int novaQuantidade = Estoque[nomeDoItem].Item2 - 1;
