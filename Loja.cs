@@ -128,4 +128,9 @@ public class Loja
         this.Estoque[nomeDoItem] = new Tuple<Item, int>(this.Estoque[nomeDoItem].Item1, novaQuantidade);
         return this.Estoque[nomeDoItem].Item1;
     }
+
+    public int RetornarQuantidadeItem(string nomeDoItem)
+    {
+        return this.Estoque[nomeDoItem].Item2;
+    }
 }
