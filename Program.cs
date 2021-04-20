@@ -30,7 +30,7 @@ namespace LojaMagica
                     do
                     {
                         Menu menuPersonagem = new Menu("Bem-vindo, " + nome,
-                            new List<string> { "Ver catálogo", "Comprar item" });
+                            new List<string> { "Ver catálogo", "Comprar item", "Sair" });
                         menuPersonagem.IniciarMenuPadrao();
                         if (menuPersonagem.Selecao == 0) { sair = true; }
                         else if (menuPersonagem.Selecao == 1) { loja.ImprimirEstoque(); }
