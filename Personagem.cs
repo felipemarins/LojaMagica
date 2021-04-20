@@ -13,12 +13,12 @@ public class Personagem
         {
             for (int i = 0; i < quantidade; i++)
             {
-                lojaAtual.VenderItem(nomeDoItem);
+                Inventario.Add(lojaAtual.VenderItem(nomeDoItem));
             }
         }
         else if (quantidade == 1)
         {
-            lojaAtual.VenderItem(nomeDoItem);
+            Inventario.Add(lojaAtual.VenderItem(nomeDoItem));
         }
         return lojaAtual;
     }
