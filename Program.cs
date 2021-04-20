@@ -20,7 +20,7 @@ namespace LojaMagica
                 {
                     Console.Write("Digite seu nome: ");
                     String nome = Console.ReadLine();
-                    Console.Write("Quanto de ouro você tem? ");
+                    Console.Write("Quantas peças de ouro você tem? ");
                     Int32 ouro = Convert.ToInt32(Console.ReadLine());
 
                     Personagem personagemAtual = new Personagem();
