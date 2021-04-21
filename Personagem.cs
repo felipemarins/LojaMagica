@@ -16,9 +16,9 @@ public class Personagem
 	{
 		Console.Clear();
 		Menu.DestacarSelecao();
-		Console.WriteLine("Status de " + Nome + '\n');
+		Console.WriteLine("Status de " + this.Nome + '\n');
 		Console.ResetColor();
-		Console.WriteLine("Peças de ouro: " + Ouro);
+		Console.WriteLine("Peças de ouro: " + this.Ouro);
 		Menu.EsperarPorTecla();
 	}
 
