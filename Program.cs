@@ -43,7 +43,7 @@ namespace LojaMagica
                             Console.Write("Quantas unidades? ");
                             int quantidade = Convert.ToInt32(Console.ReadLine());
 
-                            personagemAtual.ComprarItem(nomeDoItem, quantidade, loja);
+                            loja = personagemAtual.ComprarItem(nomeDoItem, quantidade, loja);
                         }
                     } while (sair != true);
                     sair = false;
