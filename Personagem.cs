@@ -12,6 +12,15 @@ public class Personagem
 		this.Nome = nome;
 		this.Ouro = ouro;
 	}
+	public void ImprimirStatus()
+	{
+		Console.Clear();
+		Menu.DestacarSelecao();
+		Console.WriteLine("Status de " + Nome + '\n');
+		Console.ResetColor();
+		Console.WriteLine("Peças de ouro: " + Ouro);
+		Menu.EsperarPorTecla();
+	}
 
 	public void ImprimirInventario()
 	{
