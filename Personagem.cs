@@ -7,6 +7,12 @@ public class Personagem
 	public Int32 Ouro;
 	public Dictionary<string, Tuple<Item, int>> Inventario = new Dictionary<string, Tuple<Item, int>>();
 
+	public Personagem(String nome, Int32 ouro)
+	{
+		this.Nome = nome;
+		this.Ouro = ouro;
+	}
+
 	public Loja ComprarItem(string nomeDoItem, int quantidade, Loja lojaAtual)
 	{
 		if (lojaAtual.ItemExiste(nomeDoItem))

@@ -24,9 +24,7 @@ namespace LojaMagica
 					Console.Write("Quantas peças de ouro você tem? ");
 					Int32 ouro = Convert.ToInt32(Console.ReadLine());
 
-					Personagem personagemAtual = new Personagem();
-					personagemAtual.Nome = nome;
-					personagemAtual.Ouro = ouro;
+					Personagem personagemAtual = new Personagem(nome, ouro);
 
 					do
 					{
