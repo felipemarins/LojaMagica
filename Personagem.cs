@@ -5,7 +5,7 @@ public class Personagem
 {
 	public String Nome;
 	public Int32 Ouro;
-	public List<Item> Inventario = new List<Item>();
+	public Dictionary<string, Tuple<Item, int>> Inventario = new Dictionary<string, Tuple<Item, int>>();
 
 	public Loja ComprarItem(string nomeDoItem, int quantidade, Loja lojaAtual)
 	{
@@ -18,11 +18,6 @@ public class Personagem
 				if (valorTotal <= Ouro)
 				{
 					Console.Clear();
-					Console.WriteLine("Item: " + itemSelecionado.Nome);
-					Console.WriteLine("Valor: " + itemSelecionado.Valor);
-					Console.WriteLine("Unidades a se comprar: " + quantidade);
-					Console.WriteLine("Valor total: " + valorTotal);
-
 					Menu confirmacaoDeCompra = new Menu(
 						"Item: " + itemSelecionado.Nome +
 						"\nValor: " + itemSelecionado.Valor +
@@ -37,12 +32,22 @@ public class Personagem
 						{
 							for (int i = 0; i < quantidade; i++)
 							{
-								this.Inventario.Add(lojaAtual.VenderItem(nomeDoItem));
+								lojaAtual.VenderItem(nomeDoItem);
 							}
 						}
 						else if (quantidade == 1)
 						{
-							this.Inventario.Add(lojaAtual.VenderItem(nomeDoItem));
+							lojaAtual.VenderItem(nomeDoItem);
+						}
+
+						if (this.Inventario.ContainsKey(nomeDoItem))
+						{
+							quantidade += this.Inventario[nomeDoItem].Item2;
+							this.Inventario[nomeDoItem] = new Tuple<Item, int>(this.Inventario[nomeDoItem].Item1, quantidade);
+						}
+						else
+						{
+							this.Inventario.Add(nomeDoItem, new Tuple<Item, int>(itemSelecionado, quantidade));
 						}
 					}
 				}
