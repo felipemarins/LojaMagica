@@ -41,7 +41,7 @@ public class Menu
 		{
 			if (i == this.Selecao)
 			{
-				this.DestacarSelecao();
+				DestacarSelecao();
 			}
 
 			Console.WriteLine(opcao);
@@ -72,7 +72,7 @@ public class Menu
 		this.ContinuarMenu = false;
 	}
 
-	public void DestacarSelecao()
+	public static void DestacarSelecao()
 	{
 		Console.ForegroundColor = ConsoleColor.Black;
 		Console.BackgroundColor = ConsoleColor.White;
