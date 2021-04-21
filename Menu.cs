@@ -74,8 +74,8 @@ public class Menu
 
     public void DestacarSelecao()
     {
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.BackgroundColor = ConsoleColor.Black;
+        Console.ForegroundColor = ConsoleColor.Black;
+        Console.BackgroundColor = ConsoleColor.White;
     }
 
     public static void EsperarPorTecla()
