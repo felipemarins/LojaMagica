@@ -67,6 +67,7 @@ public class Loja
 		foreach (KeyValuePair<string, Tuple<Item, int>> item in this.Estoque)
 		{
 			Console.WriteLine("Item: " + item.Key);
+			Console.WriteLine("Descrição: " + item.Value.Item1.Descricao);
 			Console.WriteLine("Valor: " + item.Value.Item1.Valor + " po");
 			Console.WriteLine("Quantidade: " + item.Value.Item2 + " unidades\n");
 		}
