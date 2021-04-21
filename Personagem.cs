@@ -13,6 +13,25 @@ public class Personagem
 		this.Ouro = ouro;
 	}
 
+	public void ImprimirInventario()
+	{
+		Console.Clear();
+		if (this.Inventario.Count == 0)
+		{
+			Console.WriteLine("Seu inventário está vazio.");
+		}
+		else
+		{
+			foreach (KeyValuePair<string, Tuple<Item, int>> itemDoInventario in this.Inventario)
+			{
+				Console.WriteLine("Nome do item: " + itemDoInventario.Key);
+				Console.WriteLine("Descrição: " + itemDoInventario.Value.Item1.Descricao);
+				Console.WriteLine("Quantidade: " + itemDoInventario.Value.Item2 + " unidades\n");
+			}
+		}
+		Menu.EsperarPorTecla();
+	}
+
 	public Loja ComprarItem(string nomeDoItem, int quantidade, Loja lojaAtual)
 	{
 		if (lojaAtual.ItemExiste(nomeDoItem))

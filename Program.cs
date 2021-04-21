@@ -29,11 +29,13 @@ namespace LojaMagica
 					do
 					{
 						Menu menuPersonagem = new Menu("Bem-vindo, " + nome,
-							new List<string> { "Ver catálogo", "Comprar item", "Sair" });
+							new List<string> { "Ver catálogo", "Ver inventário de " + personagemAtual.Nome,
+							"Comprar item", "Sair" });
 						menuPersonagem.IniciarMenuPadrao();
 						if (menuPersonagem.Selecao == 0) { sair = true; }
 						else if (menuPersonagem.Selecao == 1) { loja.ImprimirEstoque(); }
-						else if (menuPersonagem.Selecao == 2)
+						else if (menuPersonagem.Selecao == 2) { personagemAtual.ImprimirInventario(); }
+						else if (menuPersonagem.Selecao == 3)
 						{
 							Console.Clear();
 							Console.Write("Digite o nome do item: ");
