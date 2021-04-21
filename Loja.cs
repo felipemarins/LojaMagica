@@ -68,6 +68,7 @@ public class Loja
 		{
 			Console.WriteLine("Item: " + item.Key);
 			Console.WriteLine("Descrição: " + item.Value.Item1.Descricao);
+			Console.WriteLine("Categoria: " + item.Value.Item1.Categoria);
 			Console.WriteLine("Valor: " + item.Value.Item1.Valor + " po");
 			Console.WriteLine("Quantidade: " + item.Value.Item2 + " unidades\n");
 		}
