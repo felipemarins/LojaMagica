@@ -71,8 +71,7 @@ public class Loja
 			Console.WriteLine("Valor: " + item.Value.Item1.Valor + " po");
 			Console.WriteLine("Quantidade: " + item.Value.Item2 + " unidades\n");
 		}
-		Console.WriteLine("Pressione qualquer tecla para retornar ao menu");
-		Console.ReadKey();
+		Menu.EsperarPorTecla();
 	}
 
 	public void ImprimirDetalhesItem(string nomeDoItem)
