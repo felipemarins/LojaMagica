@@ -22,6 +22,10 @@ public class Personagem
 		}
 		else
 		{
+			Menu.DestacarSelecao();
+			Console.WriteLine("Inventário de " + this.Nome + '\n');
+			Console.ResetColor();
+			
 			foreach (KeyValuePair<string, Tuple<Item, int>> itemDoInventario in this.Inventario)
 			{
 				Console.WriteLine("Nome do item: " + itemDoInventario.Key);
@@ -40,7 +44,8 @@ public class Personagem
 			{
 				Item itemSelecionado = lojaAtual.RetornarItem(nomeDoItem);
 				int valorTotal = itemSelecionado.Valor * quantidade;
-				if (valorTotal <= Ouro)
+				int saldoModificado = this.Ouro - valorTotal;
+				if (valorTotal <= this.Ouro)
 				{
 					Console.Clear();
 					Menu confirmacaoDeCompra = new Menu(
@@ -48,6 +53,7 @@ public class Personagem
 						"\nValor: " + itemSelecionado.Valor +
 						"\nUnidades a se comprar: " + quantidade +
 						"\nValor total: " + valorTotal +
+						"\nSeu saldo após a compra: " + saldoModificado +
 						"\n\nTem certeza de que deseja realizar esta compra?",
 						new List<string> { "Sim", "Não" });
 					confirmacaoDeCompra.IniciarMenuPadrao();
@@ -74,6 +80,10 @@ public class Personagem
 						{
 							this.Inventario.Add(nomeDoItem, new Tuple<Item, int>(itemSelecionado, quantidade));
 						}
+
+						this.Ouro = saldoModificado;
+
+						Console.WriteLine("\nCompra realizada com sucesso!");
 					}
 				}
 				else
